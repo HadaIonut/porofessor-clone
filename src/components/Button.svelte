@@ -1,8 +1,16 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
+
   export let text;
+
+  const dispatch = createEventDispatcher();
+
+  function onClickFunction() {
+    dispatch('click');
+  }
 </script>
 
-<button class="primary-search-button"> {text} </button>
+<button on:click={onClickFunction} class="primary-search-button"> {text} </button>
 
 <style lang="scss">
   .primary-search-button {

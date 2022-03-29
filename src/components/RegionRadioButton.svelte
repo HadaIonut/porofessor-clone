@@ -2,12 +2,14 @@
   import {regionList} from "../constants/regions.js";
 
   let localRegionList = regionList;
+  export let regionSelected;
 
   const selectRegion = (event) => {
     const target = event.currentTarget.id;
     localRegionList = regionList.reduce((acc, cur) => [...acc, {...cur, selected: false}], [])
     const regionIndex = localRegionList.findIndex((region) => region.regionName === target);
     localRegionList[regionIndex].selected = true;
+    regionSelected = localRegionList[regionIndex].regionName;
   }
 </script>
 
