@@ -1,34 +1,35 @@
 <script>
   import { Router, Route, Link } from "svelte-navigator";
+  import MainPage from "./pages/MainPage.svelte";
 </script>
 
 <Router>
-  <header>
-    <h1>History</h1>
+  <div class="overall">
+    <header>
+      <nav>
+        <Link to="/">Base</Link>
+        <Link to="home">Home</Link>
+        <Link to="about">About</Link>
+      </nav>
+    </header>
 
-    <nav>
-      <Link to="/">Base</Link>
-      <Link to="home">Home</Link>
-      <Link to="about">About</Link>
-    </nav>
-  </header>
+    <main>
+      <Route path="home">
+        <h3>Home</h3>
+        <p>Home sweet home...</p>
+      </Route>
 
-  <main>
-    <Route path="home">
-      <h3>Home</h3>
-      <p>Home sweet home...</p>
-    </Route>
+      <Route path="about">
+        <h3>About</h3>
+        <p>That's what it's all about!</p>
+      </Route>
 
-    <Route path="about">
-      <h3>About</h3>
-      <p>That's what it's all about!</p>
-    </Route>
+      <Route>
+        <MainPage/>
+      </Route>
+    </main>
+  </div>
 
-    <Route>
-      <h3>Default</h3>
-      <p>No Route could be matched.</p>
-    </Route>
-  </main>
 </Router>
 
 <style lang="scss">
@@ -38,24 +39,12 @@
   }
 
   main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
+    height: 100%;
   }
 
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
+  .overall {
+    height: 98vh;
+    overflow: hidden;
   }
 
   p {
