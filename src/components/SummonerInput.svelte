@@ -1,16 +1,30 @@
 <script>
   import Button from "./Button.svelte";
   import RegionRadioButton from "./RegionRadioButton.svelte";
+  import axios from "axios";
+  import {regionToUrlMap} from "../constants/regions.js";
+  import {devKey} from "../constants/devKey.js";
 
   let inputValue = '';
-  let regionSelected = '';
+  let regionSelected = 'EUNE';
 
   const handleInput = (event) => {
     inputValue = event.target.value
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    const resp = await axios({
+      method: 'get',
+      url: `https://${regionToUrlMap[regionSelected]}/${inputValue}?api_key=${devKey}`,
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
 
+    console.log(resp)
   }
 </script>
 
