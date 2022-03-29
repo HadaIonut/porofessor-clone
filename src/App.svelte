@@ -1,26 +1,37 @@
 <script>
-  import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  import { Router, Route, Link } from "svelte-navigator";
 </script>
 
-<main>
-  <img src={logo} alt="Svelte Logo" />
-  <h1>Hello world!</h1>
+<Router>
+  <header>
+    <h1>History</h1>
 
-  <Counter />
+    <nav>
+      <Link to="/">Base</Link>
+      <Link to="home">Home</Link>
+      <Link to="about">About</Link>
+    </nav>
+  </header>
 
-  <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
-  </p>
+  <main>
+    <Route path="home">
+      <h3>Home</h3>
+      <p>Home sweet home...</p>
+    </Route>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
-    the officially supported framework, also powered by Vite!
-  </p>
-</main>
+    <Route path="about">
+      <h3>About</h3>
+      <p>That's what it's all about!</p>
+    </Route>
 
-<style>
+    <Route>
+      <h3>Default</h3>
+      <p>No Route could be matched.</p>
+    </Route>
+  </main>
+</Router>
+
+<style lang="scss">
   :root {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
