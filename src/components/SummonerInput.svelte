@@ -15,7 +15,7 @@
   const handleClick = async () => {
     const resp = await axios({
       method: 'get',
-      url: `https://${regionToUrlMap[regionSelected]}/${inputValue}?api_key=${devKey}`,
+      url: 'http://localhost:4000/summonerName/nclaudiu',
       mode: 'cors',
       headers: {
         'Access-Control-Allow-Origin': '*',
