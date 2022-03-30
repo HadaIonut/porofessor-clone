@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const request = require('request');
+const fetch = require('node-fetch');
 
 app.use(cors());
 
@@ -18,27 +18,23 @@ let regionToUrlMap = {
   'TR':	'tr1.api.riotgames.com',
   'RU':	'ru.api.riotgames.com'
 }
-let devKey = "RGAPI-9b7f170c-82ac-4c53-a503-062fbe9db2ba";
+let devKey = "RGAPI-a036b0d5-e83e-4411-ac6c-7e8856be510b";
 
-app.get('/summonerName/:userName/region/:region', function (req, res, next) {
-  console.log(req.params.userName)
-  console.log(req.params.region)
-  console.log(`https://${regionToUrlMap[req.params.region]}/lol/summoner/v4/summoners/by-name/${req.params.userName}?${devKey}`)
-  const requestOptions = {
-    url: `https://${regionToUrlMap[req.params.region]}/lol/summoner/v4/summoners/by-name/${req.params.userName}?api_key=${devKey}`,
-    method: 'GET',
+const requestToRiotAPI = async (url) => {
+  return await fetch(`${url}?api_key=${devKey}`).then(r => r.json()).then(res => res);
+}
+
+app.get('/summonerName/:userName/region/:region', async function (req, res) {
+  const userData = await requestToRiotAPI(`https://${regionToUrlMap[req.params.region]}/lol/summoner/v4/summoners/by-name/${req.params.userName}`);
+
+  if (!userData.id) {
+    res.send(userData);
+    return;
   }
-  request(requestOptions, (err, response, body) => {
-    if (err) {
-      res.send(err)
-    } else if (response.statusCode === 200) {
-      res.send(body)
-    } else {
-      res.send(response.statusCode)
-    }
-  });
 
+  const gameData = await requestToRiotAPI(`https://${regionToUrlMap[req.params.region]}/lol/spectator/v4/active-games/by-summoner/${userData.id}`)
 
+  res.send(gameData);
 })
 
 app.listen(4000, function () {

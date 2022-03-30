@@ -4,7 +4,6 @@
 </script>
 
 <Router>
-  <div class="overall">
     <header>
       <nav>
         <Link to="/">Base</Link>
@@ -28,7 +27,6 @@
         <MainPage/>
       </Route>
     </main>
-  </div>
 
 </Router>
 
@@ -38,13 +36,12 @@
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
-  main {
-    height: 100%;
+  header {
+    height: 5%;
   }
 
-  .overall {
-    height: 98vh;
-    overflow: hidden;
+  main {
+    height: 95%;
   }
 
   p {
@@ -61,5 +58,16 @@
     p {
       max-width: none;
     }
+  }
+
+  :global(body) {
+    background: #36393f;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+
+  :global(#app) {
+    height: 100%;
   }
 </style>

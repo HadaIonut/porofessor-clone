@@ -34,15 +34,23 @@
   <RegionRadioButton bind:regionSelected={regionSelected}/>
 </div>
 
-<style>
-    .input-container {
-        width: 50vw;
-        height: 5vh;
-        display: flex;
-    }
+<style lang="scss">
+  .input-container {
+    width: 50vw;
+    height: 5vh;
+    display: flex;
+  }
 
-    .primary-name-input {
-        width: 79%;
-        font-size: 24px;
+  .primary-name-input {
+    width: 79%;
+    font-size: 24px;
+    background: #40444b;
+    border: none;
+    color: white;
+    padding: 10px;
+
+    &:focus {
+      outline-width: 0;
     }
+  }
 </style>
