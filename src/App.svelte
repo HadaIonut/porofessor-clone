@@ -1,15 +1,12 @@
 <script>
   import { Router, Route, Link } from "svelte-navigator";
   import MainPage from "./pages/MainPage.svelte";
+  import MatchView from "./pages/MatchView.svelte";
 </script>
 
 <Router>
     <header>
-      <nav>
-        <Link to="/">Base</Link>
-        <Link to="home">Home</Link>
-        <Link to="about">About</Link>
-      </nav>
+
     </header>
 
     <main>
@@ -21,6 +18,10 @@
       <Route path="about">
         <h3>About</h3>
         <p>That's what it's all about!</p>
+      </Route>
+
+      <Route path="/:region/:username" let:params>
+        <MatchView region="{params.region}" username="{params.username}"/>
       </Route>
 
       <Route>
