@@ -8,6 +8,7 @@ const computeWinRate = (data) => {
 
 const formatRankedData = (data) =>
   data.reduce((acc, cur) => {
+    console.log(cur)
     return [...acc, {
       name: capitalize(cur.tier),
       winRate: computeWinRate(cur),
@@ -15,7 +16,13 @@ const formatRankedData = (data) =>
       image: `Emblem_${capitalize(cur.tier)}.png`,
       wins: cur.wins,
       losses: cur.losses,
-      lp: cur.leaguePoints
+      lp: cur.leaguePoints,
+      tags: {
+        freshBlood: cur.freshBlood,
+        hotStreak: cur.hotStreak,
+        inactive: cur.inactive,
+        veteran: cur.veteran
+      }
     }]
   }, [])
 

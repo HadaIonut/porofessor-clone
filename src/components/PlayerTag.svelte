@@ -4,12 +4,8 @@
   export let description;
 </script>
 
-<div class="tag-container good-tag">
-  tag
-</div>
-
-<div class="tag-container bad-tag">
-  tag
+<div class="tag-container {type}-tag">
+  {content}
 </div>
 
 <style lang="scss">
@@ -26,5 +22,10 @@
   .bad-tag {
     color: red;
     border: red 1px solid;
+  }
+
+  .neutral-tag {
+    color: yellow;
+    border: yellow 1px solid;
   }
 </style>
