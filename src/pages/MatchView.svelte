@@ -29,5 +29,8 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 6rem 2rem;
+    min-width: 1080px;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 </style>

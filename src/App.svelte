@@ -53,7 +53,7 @@
 
   :global(body) {
     background: #36393f;
-    height: 100vh;
+    height: 98vh;
     padding: 0;
     margin: 0;
   }

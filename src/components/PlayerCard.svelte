@@ -1,13 +1,15 @@
 <script>
+  import ChampionPerformance from "./ChampionPerformance.svelte";
+
   export let participant;
 </script>
 
 <div class="card">
   <div class="card-header">
-    {participant.summonerName}
+    {participant.summonerName} {participant.teamId}
   </div>
   <div class="section">
-    abcd
+    <ChampionPerformance participant={participant}/>
   </div>
   <div class="section">
     abcd
