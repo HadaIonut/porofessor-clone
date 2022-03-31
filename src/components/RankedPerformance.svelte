@@ -2,54 +2,35 @@
   import {onMount} from "svelte";
   import {capitalize, getDataFromAPI} from "../utils.js";
   import backendUrl from "../constants/backendUrl.js";
+  import rankedData from "../storeModules/rankedData.js";
 
   export let summonerId;
   export let region;
-  let rankedData;
-
-  const computeWinRate = (data) => {
-    const games = data.wins + data.losses;
-    return Math.round(data.wins / games * 100);
-  }
-
-  const formatRankedData = (data) =>
-    data.reduce((acc, cur) => {
-      return [...acc, {
-        name: capitalize(cur.tier),
-        winRate: computeWinRate(cur),
-        rank: cur.rank,
-        image: `Emblem_${capitalize(cur.tier)}.png`,
-        wins: cur.wins,
-        losses: cur.losses,
-        lp: cur.leaguePoints
-      }]
-    }, [])
-
 
   onMount(async () => {
-    const rawData = await getDataFromAPI("ranked/:summonerId/:region", {summonerId, region});
-    rankedData = formatRankedData(rawData.data);
+    await rankedData.populate(summonerId, region);
   })
 </script>
 
 <div class="rank-container">
-  {#if (rankedData)}
+  {#if ($rankedData?.[summonerId])}
     <div class="image-container">
-      <img src="{`${backendUrl}/static/rankEmblems/${rankedData[0].image}`}" alt='{rankedData[0].name}'>
+      <img src="{`${backendUrl}/static/rankEmblems/${$rankedData[summonerId][0].image}`}"
+           alt='{$rankedData[summonerId][0].name}'>
     </div>
     <div class="details-container">
-      <span class="division">{rankedData[0].name} {rankedData[0].rank}
+      <span class="division">{$rankedData[summonerId][0].name} {$rankedData[summonerId][0].rank}
         <span class="secondary-text">
-          {rankedData[0].lp} lp
+          {$rankedData[summonerId][0].lp} lp
         </span>
       </span>
       <span>
-        <span class="{rankedData[0].winRate >= 50 ? 'positive-win-rate' : 'negative-win-rate'}">
-          {rankedData[0].winRate}%
+        <span class="{$rankedData[summonerId][0].winRate >= 50 ? 'positive-win-rate' : 'negative-win-rate'}">
+          {$rankedData[summonerId][0].winRate}%
         </span>
         win
         <span class="secondary-text">
-          ({rankedData[0].losses + rankedData[0].wins} played)
+          ({$rankedData[summonerId][0].losses + $rankedData[summonerId][0].wins} played)
         </span>
       </span>
 

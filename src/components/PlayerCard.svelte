@@ -1,6 +1,7 @@
 <script>
   import ChampionPerformance from "./ChampionPerformance.svelte";
   import RankedPerformance from "./RankedPerformance.svelte";
+  import PlayerTag from "./PlayerTag.svelte";
 
   export let participant;
   export let region;
@@ -17,7 +18,7 @@
     <RankedPerformance region={region} summonerId={participant.summonerId}/>
   </div>
   <div class="section">
-    abcd
+    <PlayerTag />
   </div>
 </div>
 
