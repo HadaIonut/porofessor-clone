@@ -1,6 +1,7 @@
 <script>
   import {onMount} from "svelte";
   import {getDataFromAPI} from "../utils.js";
+  import PlayerCard from "../components/PlayerCard.svelte";
 
   export let region;
   export let username;
@@ -12,4 +13,21 @@
 
 </script>
 
-<pre style="color: white">{JSON.stringify(matchData)}</pre>
+<div class="player-cards-container">
+  {#if (matchData?.data)}
+    {#each matchData?.data?.participants as participant}
+      <PlayerCard participant={participant}/>
+    {/each}
+  {/if}
+</div>
+
+<style lang="scss">
+  .player-cards-container {
+    height: calc(100% - 20px);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 6rem 2rem;
+  }
+</style>

@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const fetch = require('node-fetch');
+const path = require("path");
 
 app.use(cors());
 
@@ -36,6 +37,8 @@ app.get('/summonerName/:userName/region/:region', async function (req, res) {
 
   res.send(gameData);
 })
+
+app.use('/static', express.static(path.join(__dirname, '../assets')))
 
 app.listen(4000, function () {
   console.log('CORS-enabled web server listening on port 4000')

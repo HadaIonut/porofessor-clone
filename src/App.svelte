@@ -5,21 +5,9 @@
 </script>
 
 <Router>
-    <header>
-
-    </header>
+    <header></header>
 
     <main>
-      <Route path="home">
-        <h3>Home</h3>
-        <p>Home sweet home...</p>
-      </Route>
-
-      <Route path="about">
-        <h3>About</h3>
-        <p>That's what it's all about!</p>
-      </Route>
-
       <Route path="/:region/:username" let:params>
         <MatchView region="{params.region}" username="{params.username}"/>
       </Route>
@@ -43,6 +31,8 @@
 
   main {
     height: 95%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   p {
