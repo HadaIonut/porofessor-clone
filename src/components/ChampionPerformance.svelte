@@ -61,6 +61,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-left: 5px;
+    margin-right: 5px;
 
     > :first-child {
       width: 48px;
