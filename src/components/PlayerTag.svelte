@@ -1,11 +1,15 @@
 <script>
+  import SvelteTooltip from 'svelte-tooltip';
+
   export let type;
   export let content;
   export let description;
 </script>
 
 <div class="tag-container {type}-tag">
-  {content}
+  <SvelteTooltip tip={description} top>
+    {content}
+  </SvelteTooltip>
 </div>
 
 <style lang="scss">
@@ -14,6 +18,7 @@
     width: fit-content;
     height: fit-content;
     margin: 5px;
+    cursor: default;
   }
 
   .good-tag {

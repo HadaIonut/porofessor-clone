@@ -14,25 +14,25 @@
   {#if participantData?.[0]}
 
     {#if participantData[0].winRate > 70}
-      <PlayerTag type="good" content="good win-rate" description="caca"/>
+      <PlayerTag type="good" content="good win-rate" description="This player has above 70% win-rate"/>
     {:else if participantData[0].winRate < 40}
-      <PlayerTag type="bad" content="bad win-rate" description="caca"/>
+      <PlayerTag type="bad" content="bad win-rate" description="This player has bellow 40% win-rate"/>
     {/if}
 
     {#if participantData[0].tags.freshBlood}
-      <PlayerTag type="neutral" content="fresh blood" description="caca"/>
+      <PlayerTag type="neutral" content="fresh blood" description="This player is new"/>
     {/if}
 
     {#if participantData[0].tags.hotStreak}
-      <PlayerTag type="good" content="hot streak" description="caca"/>
+      <PlayerTag type="good" content="hot streak" description="This player has a good win streak"/>
     {/if}
 
     {#if participantData[0].tags.inactive}
-      <PlayerTag type="bad" content="inactive" description="caca"/>
+      <PlayerTag type="bad" content="inactive" description="This player has been inactive for a while"/>
     {/if}
 
     {#if participantData[0].tags.veteran}
-      <PlayerTag type="good" content="veteran" description="caca"/>
+      <PlayerTag type="good" content="veteran" description="This player has played for a while"/>
     {/if}
   {/if}
 </div>
