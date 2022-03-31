@@ -8,7 +8,7 @@
 
 <div class="card">
   <div class="card-header">
-    {participant.summonerName} {participant.teamId}
+    {participant.summonerName}
   </div>
   <div class="section">
     <ChampionPerformance participant={participant}/>

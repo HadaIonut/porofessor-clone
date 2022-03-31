@@ -39,13 +39,16 @@
     </div>
     <div class="details-container">
       <span class="division">{rankedData[0].name} {rankedData[0].rank}
-        <span class="lp-container">
+        <span class="secondary-text">
           {rankedData[0].lp} lp
         </span>
       </span>
       <span>
-        {rankedData[0].winRate}% win
-        <span class="lp-container">
+        <span class="{rankedData[0].winRate >= 50 ? 'positive-win-rate' : 'negative-win-rate'}">
+          {rankedData[0].winRate}%
+        </span>
+        win
+        <span class="secondary-text">
           ({rankedData[0].losses + rankedData[0].wins} played)
         </span>
       </span>
@@ -65,7 +68,7 @@
     justify-content: center;
   }
 
-  .lp-container {
+  .secondary-text {
     color: #ababab;
   }
 
@@ -93,5 +96,13 @@
       height: 100%;
       object-fit: contain;
     }
+  }
+
+  .negative-win-rate {
+    color: red;
+  }
+
+  .positive-win-rate {
+    color: greenyellow;
   }
 </style>
