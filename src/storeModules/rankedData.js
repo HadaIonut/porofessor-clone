@@ -8,7 +8,6 @@ const computeWinRate = (data) => {
 
 const formatRankedData = (data) =>
   data.reduce((acc, cur) => {
-    console.log(cur)
     return [...acc, {
       name: capitalize(cur.tier),
       winRate: computeWinRate(cur),

@@ -7,11 +7,10 @@
   let participantData;
   rankedData.subscribe((value) => {
     participantData = value?.[participant?.summonerId];
-    console.log(participantData)
   })
 </script>
 
-<div>
+<div class="tag-container">
   {#if participantData?.[0]}
 
     {#if participantData[0].winRate > 70}
@@ -37,3 +36,14 @@
     {/if}
   {/if}
 </div>
+
+<style lang="scss">
+  .tag-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+</style>

@@ -12,6 +12,8 @@
   .tag-container {
     padding: 5px 20px 5px 20px;
     width: fit-content;
+    height: fit-content;
+    margin: 5px;
   }
 
   .good-tag {
