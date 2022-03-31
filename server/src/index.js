@@ -38,6 +38,12 @@ app.get('/summonerName/:userName/region/:region', async function (req, res) {
   res.send(gameData);
 })
 
+app.get('/ranked/:summonerId/:region', async (req, res) => {
+  const rankedData = await requestToRiotAPI(`https://${regionToUrlMap[req.params.region]}/lol/league/v4/entries/by-summoner/${req.params.summonerId}`);
+
+  res.send(rankedData);
+})
+
 app.use('/static', express.static(path.join(__dirname, '../assets')))
 
 app.listen(4000, function () {

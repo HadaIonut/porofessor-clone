@@ -16,7 +16,7 @@
 <div class="player-cards-container">
   {#if (matchData?.data)}
     {#each matchData?.data?.participants as participant}
-      <PlayerCard participant={participant}/>
+      <PlayerCard participant={participant} region={region}/>
     {/each}
   {/if}
 </div>
