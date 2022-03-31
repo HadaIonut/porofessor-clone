@@ -43,7 +43,7 @@
     </div>
   </div>
   <div class="stats-container">
-    other data
+    Tis very hard to compute with my limited API rights :(
   </div>
 </div>
 
@@ -80,5 +80,9 @@
 
   .stats-container {
     width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>
