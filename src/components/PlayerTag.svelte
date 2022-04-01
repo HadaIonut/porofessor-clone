@@ -6,14 +6,14 @@
   export let description;
 </script>
 
-<div class="tag-container {type}-tag">
+<div class="tag-content {type}-tag">
   <SvelteTooltip tip={description} top>
     {content}
   </SvelteTooltip>
 </div>
 
 <style lang="scss">
-  .tag-container {
+  .tag-content {
     padding: 5px 20px 5px 20px;
     width: fit-content;
     height: fit-content;

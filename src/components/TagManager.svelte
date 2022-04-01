@@ -45,5 +45,14 @@
     grid-template-rows: 1fr 1fr;
     justify-items: center;
     align-items: center;
+
+    :global(& :first-child:nth-last-child(1)) {
+      grid-column: auto / span 2;
+    }
+
+    :global(& :first-child:nth-last-child(3):last-child),
+    :global(& :first-child:nth-last-child(3) ~ :last-child) {
+      grid-column: auto / span 2;
+    }
   }
 </style>
