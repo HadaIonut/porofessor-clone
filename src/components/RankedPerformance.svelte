@@ -30,7 +30,7 @@
         </span>
         win
         <span class="secondary-text">
-          ({$rankedData[summonerId][0].losses + $rankedData[summonerId][0].wins} played)
+          ({($rankedData[summonerId][0].losses + $rankedData[summonerId][0].wins) || 0} played)
         </span>
       </span>
 

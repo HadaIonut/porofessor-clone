@@ -1,11 +1,21 @@
 <script>
   import Card from "./Card.svelte";
   import {findChampionFromId, findUrlForImage} from "../pictureUtils.js";
+  import {navigate} from "svelte-navigator";
 
   export let game;
+  export let gameIndex;
+
+  const headerOnClick = () => {
+    let route = '/';
+    if (gameIndex < 4) route += 'EUW/';
+    else route += 'NA/';
+    route += game.participants[0].summonerName;
+    navigate(route);
+  }
 </script>
 
-<Card className="featured-game">
+<Card className="featured-game" hoverableTitle={true} headerOnClick={headerOnClick}>
   <span slot="header">
     {game.gameMode}
   </span>
@@ -55,7 +65,7 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: column;
-    grid-gap: 5px 15px;
+    grid-gap: 1px 15px;
   }
 
   .character-image {

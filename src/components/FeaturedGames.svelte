@@ -6,8 +6,8 @@ import FeaturedGameCard from "./FeaturedGameCard.svelte";
 <div class="featured-games">
   <div class="title">Featured Games</div>
   <div class="cards-container">
-    {#each $featuredGames as game}
-      <FeaturedGameCard game={game}/>
+    {#each $featuredGames as game, index}
+      <FeaturedGameCard game={game} gameIndex={index}/>
     {/each}
   </div>
 </div>
