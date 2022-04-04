@@ -15,7 +15,7 @@ import FeaturedGameCard from "./FeaturedGameCard.svelte";
 
 <style lang="scss">
   .cards-container {
-    width: 50vw;
+    width: 75vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
