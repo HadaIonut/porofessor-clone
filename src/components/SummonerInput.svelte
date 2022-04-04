@@ -1,24 +1,28 @@
 <script>
   import Button from "./Button.svelte";
   import RegionRadioButton from "./RegionRadioButton.svelte";
-  import axios from "axios";
+
   import {navigate} from "svelte-navigator";
 
   let inputValue = '';
   let regionSelected = 'EUNE';
 
-  const handleInput = (event) => {
-    inputValue = event.target.value
-  }
+  const handleNavigation = () => navigate(`/${regionSelected}/${inputValue}`);
 
-  const handleClick = () => navigate(`/${regionSelected}/${inputValue}`);
+  const handleKeyboard = (event) => {
+    if (event.code === 'Enter') handleNavigation();
+  }
 
 </script>
 
 <div class="summoner-input">
   <div class="input-container">
-    <input on:change={handleInput} class="primary-name-input" type="text">
-    <Button on:click={handleClick} text="Search"/>
+    <input bind:value={inputValue}
+           on:keypress={handleKeyboard}
+           placeholder="Insert someone's summoner name"
+           class="primary-name-input"
+           type="text" >
+    <Button on:click={handleNavigation} text="Search"/>
   </div>
   <RegionRadioButton bind:regionSelected={regionSelected}/>
 </div>
