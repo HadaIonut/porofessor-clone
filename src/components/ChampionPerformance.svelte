@@ -3,35 +3,15 @@
   import summonerSpells from "../constants/league-constants/summonerSpells.js";
   import runes from "../constants/league-constants/runes.js";
   import backendUrl from "../constants/backendUrl.js";
+  import {findChampionFromId, findPerkFromId, findSpellFromId, findUrlForImage} from "../pictureUtils.js";
 
   export let participant;
-
-  const findChampionFromId = () => champions.find((champion) => Number(champion.id) === participant.championId);
-  const findSpellFromId = (spellId) => summonerSpells.find((spell) => Number(spell.id) === spellId);
-  const findPerkFromId = (perkId) => runes.find((rune) => Number(rune.id) === perkId);
-  const findUrlForImage = (type, imageName) => {
-    let base = `${backendUrl}/static/`;
-
-    switch (type) {
-      case 'champion':
-        base += `champions/${imageName}`
-        break;
-      case 'spell':
-        base += `summonerSpells/${imageName}`
-        break;
-      case 'rune':
-        base += `runes/${imageName}`
-        break;
-    }
-
-    return base;
-  }
 </script>
 
 <div class="container">
   <div class="image-container">
-    <img src="{findUrlForImage('champion',findChampionFromId().image)}"
-         alt="{findChampionFromId().name}">
+    <img src="{findUrlForImage('champion',findChampionFromId(participant.championId).image)}"
+         alt="{findChampionFromId(participant.championId).name}">
 
     <div class="spells-container">
       <img src="{findUrlForImage('rune',findPerkFromId(participant.perks.perkStyle).image)}"

@@ -19,7 +19,7 @@ let regionToUrlMap = {
   'TR':	'tr1.api.riotgames.com',
   'RU':	'ru.api.riotgames.com'
 }
-let devKey = "RGAPI-54f08608-ff2b-4a87-b0ba-8d33ccc95d98";
+let devKey = "RGAPI-4756ec36-eafc-4bc0-978e-5efa42fe5ef1";
 
 const requestToRiotAPI = async (url) => {
   return await fetch(`${url}?api_key=${devKey}`).then(r => r.json()).then(res => res);
@@ -42,6 +42,13 @@ app.get('/ranked/:summonerId/:region', async (req, res) => {
   const rankedData = await requestToRiotAPI(`https://${regionToUrlMap[req.params.region]}/lol/league/v4/entries/by-summoner/${req.params.summonerId}`);
 
   res.send(rankedData);
+})
+
+app.get('/featured', async (req, res) => {
+  const featuredGamesEUW = await requestToRiotAPI(`https://${regionToUrlMap['EUW']}/lol/spectator/v4/featured-games`)
+  const featuredGamesNA = await requestToRiotAPI(`https://${regionToUrlMap['NA']}/lol/spectator/v4/featured-games`)
+
+  res.send([...featuredGamesEUW.gameList, ...featuredGamesNA.gameList]);
 })
 
 app.use('/static', express.static(path.join(__dirname, '../assets')))

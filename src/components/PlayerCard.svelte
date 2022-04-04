@@ -3,25 +3,28 @@
   import RankedPerformance from "./RankedPerformance.svelte";
   import PlayerTag from "./PlayerTag.svelte";
   import TagManager from "./TagManager.svelte";
+  import Card from "./Card.svelte";
 
   export let participant;
   export let region;
 </script>
 
-<div class="card">
-  <div class="card-header">
+<Card>
+  <span slot="header">
     {participant.summonerName}
+  </span>
+  <div class="body-container" slot="body">
+    <div class="section">
+      <ChampionPerformance participant={participant}/>
+    </div>
+    <div class="section">
+      <RankedPerformance region={region} summonerId={participant.summonerId}/>
+    </div>
+    <div class="section">
+      <TagManager participant={participant}/>
+    </div>
   </div>
-  <div class="section">
-    <ChampionPerformance participant={participant}/>
-  </div>
-  <div class="section">
-    <RankedPerformance region={region} summonerId={participant.summonerId}/>
-  </div>
-  <div class="section">
-    <TagManager participant={participant}/>
-  </div>
-</div>
+</Card>
 
 <style lang="scss">
   .card {
@@ -37,8 +40,12 @@
     font-size: 18px;
   }
 
+  .body-container {
+    height: 100%;
+  }
+
   .section {
-    height: calc((100% - 10px - 18px) / 3);
+    height: calc(100% / 3);
     background: #3a3f44;
 
     &:not(:last-child) {
