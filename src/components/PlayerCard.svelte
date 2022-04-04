@@ -9,7 +9,7 @@
   export let region;
 </script>
 
-<Card>
+<Card className="ranked-player-card">
   <span slot="header">
     {participant.summonerName}
   </span>
@@ -27,9 +27,10 @@
 </Card>
 
 <style lang="scss">
-  .card {
+  :global(.ranked-player-card) {
     text-align: center;
     color: white;
+    height: 40vh;
   }
 
   .card-header {
@@ -52,4 +53,5 @@
       border-bottom: black 1px solid;
     }
   }
+
 </style>

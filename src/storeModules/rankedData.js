@@ -7,7 +7,10 @@ const computeWinRate = (data) => {
 }
 
 const formatRankedData = (data) => {
-  // console.log(data)
+  data = data.reduce((acc, cur) => {
+    if (cur.queueType.includes('TFT')) return acc;
+    return [...acc, cur];
+  }, [])
   if (data.length === 0) {
     return [{
       name: 'Unranked',
@@ -25,8 +28,7 @@ const formatRankedData = (data) => {
       }
     }]
   } else return data.reduce((acc, cur) => {
-    if (cur.queueType.includes('TFT')) return acc;
-    return [...acc, {
+      return [...acc, {
         name: capitalize(cur.tier),
         winRate: computeWinRate(cur),
         rank: cur.rank,
@@ -42,12 +44,12 @@ const formatRankedData = (data) => {
         }
       }]
     }
-  , [])
+    , [])
 }
 
 
 const createRankedDataStore = () => {
-  const { subscribe, set, update } = writable({});
+  const {subscribe, set, update} = writable({});
 
   return {
     subscribe,

@@ -28,25 +28,24 @@
 </div>
 
 <style lang="scss">
+  @import "src/mixins/generics";
+
   .container {
-    height: 100%;
-    width: 100%;
+    @include fullSize();
     display: flex;
   }
 
   .image-container {
+    @include flex-center();
+
     height: 100%;
     width: 25%;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     margin-left: 5px;
     margin-right: 5px;
 
     > :first-child {
-      width: 48px;
-      height: 48px;
+      @include fixed-size(48px)
     }
 
     > .spells-container {
@@ -54,17 +53,15 @@
       display: flex;
 
       > * {
-        width: 16px;
-        height: 16px;
+        @include fixed-size(16px)
       }
     }
   }
 
   .stats-container {
+    @include flex-center();
+
     width: 100%;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 </style>

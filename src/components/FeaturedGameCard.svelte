@@ -38,6 +38,8 @@
 </Card>
 
 <style lang="scss">
+  @import "src/mixins/generics";
+
   :global(.featured-game) {
     background: #3a3f44;
     height: 20rem;
@@ -56,14 +58,13 @@
   }
 
   .player-row {
-    height: 100%;
-    width: 100%;
+    @include fullSize();
   }
 
   .featured-game-grid {
+    @include fullSize();
+
     display: grid;
-    height: 100%;
-    width: 100%;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: column;
@@ -71,8 +72,7 @@
   }
 
   .character-image {
-    width: 40px;
-    height: 40px;
+    @include fixed-size(40px);
   }
 
   .player-row {

@@ -19,9 +19,10 @@
 </div>
 
 <style lang="scss">
+  @import "src/mixins/generics";
+
   .error-image {
-    height: 20rem;
-    width: 20rem;
+    @include fixed-size(20rem);
   }
 
   .primary-error {

@@ -1,0 +1,15 @@
+@mixin fullSize() {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin fixed-size($value) {
+  width: $value;
+  height: $value;
+}
+
+@mixin flex-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

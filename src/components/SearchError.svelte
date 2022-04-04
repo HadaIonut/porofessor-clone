@@ -29,11 +29,11 @@
 </div>
 
 <style lang="scss">
+  @import "src/mixins/generics";
+
   .error-container {
     height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center();
     flex-direction: column;
   }
 

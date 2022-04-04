@@ -13,12 +13,13 @@
 </div>
 
 <style lang="scss">
+  @import "src/mixins/generics";
+
   .page-container {
+    @include flex-center();
+
     height: 100%;
     padding-top: 10rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
   }
 </style>

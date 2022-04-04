@@ -39,10 +39,11 @@
 </div>
 
 <style lang="scss">
+  @import "src/mixins/generics";
+
   .rank-container {
     display: flex;
-    width: 100%;
-    height: 100%;
+    @include fullSize();
   }
 
   .division {
@@ -56,10 +57,8 @@
   .details-container {
     width: 60%;
     height: 100%;
-    display: flex;
+    @include flex-center();
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     font-size: 14px;
 
     > * {
@@ -73,8 +72,7 @@
     padding: 10px;
 
     > * {
-      width: 100%;
-      height: 100%;
+      @include fullSize();
       object-fit: contain;
     }
   }
