@@ -8,8 +8,10 @@
 
   const headerOnClick = () => {
     let route = '/';
+
     if (gameIndex < 4) route += 'EUW/';
     else route += 'NA/';
+
     route += game.participants[0].summonerName;
     navigate(route);
   }
