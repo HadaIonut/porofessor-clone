@@ -25,6 +25,7 @@
 
 <style lang="scss">
   @import "src/mixins/generics";
+  @import "src/mixins/colors";
 
   .error-container {
     height: 60vh;
@@ -37,12 +38,12 @@
   }
 
   .primary-error {
-    color: white;
+    color: $white;
     font-size: 24px;
   }
 
   .secondary-error {
-    color: #ababab;
+    color: $dark-white;
     font-size: 20px;
   }
 </style>

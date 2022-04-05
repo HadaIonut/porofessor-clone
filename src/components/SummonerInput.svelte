@@ -29,6 +29,8 @@
 </div>
 
 <style lang="scss">
+  @import "src/mixins/colors";
+
   .input-container {
     width: 50vw;
     height: 5vh;
@@ -38,9 +40,9 @@
   .primary-name-input {
     width: 79%;
     font-size: 24px;
-    background: #40444b;
+    background: $dark-gray;
     border: none;
-    color: white;
+    color: $white;
     padding: 10px;
 
     &:focus {

@@ -27,17 +27,19 @@
 </Card>
 
 <style lang="scss">
+  @import "src/mixins/colors";
+
   :global(.ranked-player-card) {
     text-align: center;
-    color: white;
+    color: $white;
     height: 40vh;
   }
 
   .card-header {
-    background: #2a2c31;
+    background: $dark-gray;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-bottom: #2387a9 solid 2px;
+    border-bottom: $border-blue solid 2px;
     font-size: 18px;
   }
 
@@ -47,10 +49,10 @@
 
   .section {
     height: calc(100% / 3);
-    background: #3a3f44;
+    background: $light-gray;
 
     &:not(:last-child) {
-      border-bottom: black 1px solid;
+      border-bottom: $black 1px solid;
     }
   }
 

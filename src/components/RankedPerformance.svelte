@@ -40,6 +40,7 @@
 
 <style lang="scss">
   @import "src/mixins/generics";
+  @import "src/mixins/colors";
 
   .rank-container {
     display: flex;
@@ -51,7 +52,7 @@
   }
 
   .secondary-text {
-    color: #ababab;
+    color: $dark-white;
   }
 
   .details-container {
@@ -78,10 +79,10 @@
   }
 
   .negative-win-rate {
-    color: red;
+    color: $red;
   }
 
   .positive-win-rate {
-    color: greenyellow;
+    color: $green;
   }
 </style>

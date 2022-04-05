@@ -26,6 +26,8 @@
 </div>
 
 <style lang="scss">
+  @import "src/mixins/colors";
+
   .region-select {
     display: flex;
     justify-content: space-evenly;
@@ -37,13 +39,13 @@
   }
 
   .region-radio-button {
-    background: #2387a9;
-    color: white;
+    background: $border-blue;
+    color: $white;
     padding: 0.4rem;
     transition: background 0.4s ease;
 
     &.selected {
-      background: #13495B;
+      background: $dark-blue;
     }
   }
 </style>
