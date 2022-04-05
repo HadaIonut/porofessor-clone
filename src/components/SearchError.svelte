@@ -1,6 +1,7 @@
 <script>
   import backendUrl from "../constants/backendUrl.js";
   import Error from "./Error.svelte";
+  import {errorMessages} from "../constants/text-lists.js";
 
   export let errorType;
 </script>
@@ -9,21 +10,15 @@
   {#if (errorType === 'not-found')}
     <Error
         imageURL="{backendUrl}/static/errorPictures/tired-poro.png"
-        altImg="Just a hurt poro :("
-        primaryText="The specific user you searched for was not found."
-        secondaryText="Your either miss-typed their name or they are not in a game"/>
+        {...errorMessages.notFound}/>
   {:else if (errorType === 'unauth' || errorType === 'bad-key')}
     <Error
         imageURL="{backendUrl}/static/errorPictures/bad-dev-key.png"
-        altImg="Adventure poro :)"
-        primaryText="Something is wrong with your dev key"
-        secondaryText="Your dev key is either expired or wrong"/>
+        {...errorMessages.badKey}/>
   {:else }
     <Error
         imageURL="{backendUrl}/static/errorPictures/other-error-poro.png"
-        altImg="Cute poro"
-        primaryText="Who know what could be wrong here"
-        secondaryText="No, really, what did you do, I cannot even replicate this"/>
+        {...errorMessages.other}/>
   {/if}
 
 </div>
@@ -38,8 +33,7 @@
   }
 
   .error-image {
-    height: 20rem;
-    width: 20rem;
+    @include fixed-size(20rem);
   }
 
   .primary-error {
