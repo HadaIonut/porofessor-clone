@@ -3,6 +3,7 @@
   import RegionRadioButton from "./RegionRadioButton.svelte";
 
   import {navigate} from "svelte-navigator";
+  import {genericMessages} from "../constants/text-lists.js";
 
   let inputValue = '';
   let regionSelected = 'EUNE';
@@ -19,10 +20,10 @@
   <div class="input-container">
     <input bind:value={inputValue}
            on:keypress={handleKeyboard}
-           placeholder="Insert someone's summoner name"
+           placeholder={genericMessages.summonerInputPlaceholder}
            class="primary-name-input"
            type="text" >
-    <Button on:click={handleNavigation} text="Search"/>
+    <Button on:click={handleNavigation} text={genericMessages.search}/>
   </div>
   <RegionRadioButton bind:regionSelected={regionSelected}/>
 </div>

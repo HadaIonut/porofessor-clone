@@ -1,6 +1,7 @@
 <script>
   import rankedData from "../storeModules/rankedData.js";
   import PlayerTag from "./PlayerTag.svelte";
+  import {playerTags} from "../constants/text-lists.js";
 
   export let participant;
 
@@ -14,25 +15,25 @@
   {#if participantData?.[0]}
 
     {#if participantData[0].winRate > 70}
-      <PlayerTag type="good" content="good win-rate" description="This player has above 70% win-rate"/>
+      <PlayerTag {...playerTags.goodWins}/>
     {:else if participantData[0].winRate < 40}
-      <PlayerTag type="bad" content="bad win-rate" description="This player has bellow 40% win-rate"/>
+      <PlayerTag {...playerTags.badWins}/>
     {/if}
 
     {#if participantData[0].tags.freshBlood}
-      <PlayerTag type="neutral" content="fresh blood" description="This player is new"/>
+      <PlayerTag {...playerTags.newPlayer}/>
     {/if}
 
     {#if participantData[0].tags.hotStreak}
-      <PlayerTag type="good" content="hot streak" description="This player has a good win streak"/>
+      <PlayerTag {...playerTags.winStreak}/>
     {/if}
 
     {#if participantData[0].tags.inactive}
-      <PlayerTag type="bad" content="inactive" description="This player has been inactive for a while"/>
+      <PlayerTag {...playerTags.inactive}/>
     {/if}
 
     {#if participantData[0].tags.veteran}
-      <PlayerTag type="good" content="veteran" description="This player has played for a while"/>
+      <PlayerTag {...playerTags.veteran}/>
     {/if}
   {/if}
 </div>
