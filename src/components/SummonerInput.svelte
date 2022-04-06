@@ -8,7 +8,7 @@
   let inputValue = '';
   let regionSelected = 'EUNE';
 
-  const handleNavigation = () => navigate(`/${regionSelected}/${inputValue}`);
+  const handleNavigation = () => navigate(`match/${regionSelected}/${inputValue}`);
 
   const handleKeyboard = (event) => {
     if (event.code === 'Enter') handleNavigation();

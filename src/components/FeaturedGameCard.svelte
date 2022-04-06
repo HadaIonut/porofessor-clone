@@ -7,7 +7,7 @@
   export let gameIndex;
 
   const headerOnClick = () => {
-    let route = '/';
+    let route = 'match/';
 
     if (gameIndex < 4) route += 'EUW/';
     else route += 'NA/';
@@ -30,7 +30,10 @@
             <img src="{findUrlForImage('champion',findChampionFromId(participant.championId).image)}"
                  alt="{findChampionFromId(participant.championId).name}"
                  class="character-image">
-            <div class="player-name">{participant.summonerName}</div>
+            <div class="player-name"
+                 on:click={navigate(`/user/${participant.summonerName}`)}>
+              {participant.summonerName}
+            </div>
           </div>
 
         {/each}

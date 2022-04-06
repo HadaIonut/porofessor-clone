@@ -1,15 +1,20 @@
 <script>
   import ChampionPerformance from "./ChampionPerformance.svelte";
   import RankedPerformance from "./RankedPerformance.svelte";
-  import PlayerTag from "./PlayerTag.svelte";
   import TagManager from "./TagManager.svelte";
   import Card from "./Card.svelte";
+  import {navigate} from "svelte-navigator";
 
   export let participant;
   export let region;
+
+  const viewPlayer = () => {
+    navigate(`/user/${participant.summonerName}`)
+  }
+
 </script>
 
-<Card className="ranked-player-card" hoverableTitle={true}>
+<Card className="ranked-player-card" hoverableTitle={true} headerOnClick={viewPlayer}>
   <span slot="header">
     {participant.summonerName}
   </span>

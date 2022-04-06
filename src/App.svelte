@@ -2,14 +2,19 @@
   import { Router, Route, Link } from "svelte-navigator";
   import MainPage from "./pages/MainPage.svelte";
   import MatchView from "./pages/MatchView.svelte";
+  import PlayerView from "./pages/PlayerView.svelte";
 </script>
 
 <Router>
     <header></header>
 
     <main>
-      <Route path="/:region/:username" let:params>
+      <Route path="/match/:region/:username" let:params>
         <MatchView region="{params.region}" username="{params.username}"/>
+      </Route>
+
+      <Route path="/user/:username" let:params>
+        <PlayerView username="{params.username}"/>
       </Route>
 
       <Route>
