@@ -35,14 +35,6 @@
     height: 40vh;
   }
 
-  .card-header {
-    background: $dark-gray;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-bottom: $border-blue solid 2px;
-    font-size: 18px;
-  }
-
   .body-container {
     height: 100%;
   }

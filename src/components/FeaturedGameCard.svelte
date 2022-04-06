@@ -49,14 +49,6 @@
     width: 100%;
   }
 
-  .game-mode {
-    background: #2a2c31;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-bottom: #2387a9 solid 2px;
-    font-size: 18px;
-  }
-
   .player-row {
     @include fullSize();
   }

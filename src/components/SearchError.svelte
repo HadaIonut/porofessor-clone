@@ -32,18 +32,4 @@
     @include flex-center();
     flex-direction: column;
   }
-
-  .error-image {
-    @include fixed-size(20rem);
-  }
-
-  .primary-error {
-    color: $white;
-    font-size: 24px;
-  }
-
-  .secondary-error {
-    color: $dark-white;
-    font-size: 20px;
-  }
 </style>
