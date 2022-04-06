@@ -1,7 +1,8 @@
 <script>
   export let className = '';
   export let hoverableTitle = false;
-  export let headerOnClick = function (){};
+  export let headerOnClick = function () {
+  };
 </script>
 
 <div class="card {className}">
@@ -14,6 +15,9 @@
 </div>
 
 <style lang="scss">
+  @import "src/mixins/generics";
+  @import "src/mixins/colors";
+
   .card {
     text-align: center;
     color: white;
@@ -32,27 +36,6 @@
   }
 
   .hover {
-    display: block;
-    position: relative;
-    padding: 0.25em 0;
-    cursor: pointer;
-
-    &:hover::after {
-      transform: scale(1);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 0.2em;
-      background-color: #2387a9;
-      transition: opacity 200ms, transform 200ms;
-      opacity: 1;
-      transform: scale(0);
-      transform-origin: center;
-    }
+    @include hoverable($border-blue, 0.2em);
   }
 </style>

@@ -13,3 +13,28 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin hoverable($color, $height) {
+  display: block;
+  position: relative;
+  padding: 0.25em 0;
+  cursor: pointer;
+
+  &:hover::after {
+    transform: scale(1);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $height;
+    background-color: $color;
+    transition: opacity 200ms, transform 200ms;
+    opacity: 1;
+    transform: scale(0);
+    transform-origin: center;
+  }
+}

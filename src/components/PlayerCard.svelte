@@ -9,7 +9,7 @@
   export let region;
 </script>
 
-<Card className="ranked-player-card">
+<Card className="ranked-player-card" hoverableTitle={true}>
   <span slot="header">
     {participant.summonerName}
   </span>

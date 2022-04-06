@@ -25,12 +25,14 @@
     <div class="featured-game-grid">
       {#if game.participants}
         {#each game.participants as participant, index}
+
           <div class="player-row {index < 5 ? 'reverse-row' : ''}">
             <img src="{findUrlForImage('champion',findChampionFromId(participant.championId).image)}"
                  alt="{findChampionFromId(participant.championId).name}"
                  class="character-image">
             <div class="player-name">{participant.summonerName}</div>
           </div>
+
         {/each}
       {/if}
     </div>
@@ -39,6 +41,7 @@
 
 <style lang="scss">
   @import "src/mixins/generics";
+  @import "src/mixins/colors";
 
   :global(.featured-game) {
     background: #3a3f44;
@@ -79,5 +82,9 @@
 
   .body-container {
     height: 100%;
+  }
+
+  .player-name {
+    @include hoverable($white, 0.1em);
   }
 </style>
