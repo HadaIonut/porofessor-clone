@@ -7,6 +7,8 @@
   export let region;
   export let username;
   let matchData;
+  let blueTeam;
+  let redTeam;
   let isError = false;
   let errorType;
 
@@ -35,6 +37,8 @@
 
   onMount(async () => {
     matchData = await getDataFromAPI("summonerName/:username/region/:region", {username, region});
+    blueTeam = matchData?.data?.participants?.slice(0, 5)
+    redTeam = matchData?.data?.participants?.slice(5, 10)
     handleErrors()
   })
 
@@ -42,9 +46,16 @@
 {#if (!isError)}
   <div class="player-cards-container">
     {#if (matchData?.data)}
-      {#each matchData?.data?.participants as participant}
-        <PlayerCard participant={participant} region={region}/>
-      {/each}
+      <div class="player-cards-row">
+        {#each blueTeam as participant}
+          <PlayerCard participant={participant} region={region}/>
+        {/each}
+      </div>
+      <div class="player-cards-row">
+        {#each redTeam as participant}
+          <PlayerCard participant={participant} region={region}/>
+        {/each}
+      </div>
     {/if}
   </div>
 {:else }
@@ -53,14 +64,15 @@
 
 <style lang="scss">
   .player-cards-container {
-    height: calc(100% - 20px);
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 6rem 2rem;
     min-width: 1080px;
-    overflow-x: auto;
-    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  .player-cards-row {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 </style>

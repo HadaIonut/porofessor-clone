@@ -37,7 +37,8 @@
   :global(.ranked-player-card) {
     text-align: center;
     color: $white;
-    height: 40vh;
+    height: 380px;
+    margin: 10px;
   }
 
   .body-container {
