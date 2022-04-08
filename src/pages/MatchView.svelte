@@ -44,9 +44,9 @@
 
 </script>
 {#if (!isError)}
-  <div className="player-cards-container">
+  <div class="player-cards-container">
     {#if (matchData?.data)}
-      <div className="player-cards-row">
+      <div class="player-cards-row">
         {#each blueTeam as participant}
           <PlayerCard participant={participant} region={region}/>
         {/each}
