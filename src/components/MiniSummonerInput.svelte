@@ -1,6 +1,6 @@
 <script>
   import {genericMessages} from "../constants/text-lists.js";
-  import backendUrl from "../constants/backendUrl.js";
+  import Dropdown from "./Dropdown.svelte";
 
   let searchValue;
 </script>
@@ -10,7 +10,15 @@
          class="mini-summoner-search"
          placeholder={genericMessages.summonerInputPlaceholder}
         bind:value={searchValue}>
-  <img src={`${backendUrl}/static/icons/search.png`}>
+
+  <Dropdown>
+    <div slot="dropdown-button">caca</div>
+    <div slot="options">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </div>
+  </Dropdown>
 </div>
 
 <style lang="scss">
