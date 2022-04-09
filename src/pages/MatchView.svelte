@@ -3,6 +3,7 @@
   import {getDataFromAPI} from "../utils.js";
   import PlayerCard from "../components/PlayerCard.svelte";
   import SearchError from "../components/SearchError.svelte";
+  import MatchBans from "../components/MatchBans.svelte";
 
   export let region;
   export let username;
@@ -44,20 +45,24 @@
 
 </script>
 {#if (!isError)}
-  <div class="player-cards-container">
-    {#if (matchData?.data)}
-      <div class="player-cards-row">
-        {#each blueTeam as participant}
-          <PlayerCard participant={participant} region={region}/>
-        {/each}
-      </div>
-      <div class="player-cards-row">
-        {#each redTeam as participant}
-          <PlayerCard participant={participant} region={region}/>
-        {/each}
-      </div>
-    {/if}
+  <div class="wrapper">
+    <div class="player-cards-container">
+      {#if (matchData?.data)}
+        <MatchBans banList={matchData.data.bannedChampions}/>
+        <div class="player-cards-row">
+          {#each blueTeam as participant}
+            <PlayerCard participant={participant} region={region}/>
+          {/each}
+        </div>
+        <div class="player-cards-row">
+          {#each redTeam as participant}
+            <PlayerCard participant={participant} region={region}/>
+          {/each}
+        </div>
+      {/if}
+    </div>
   </div>
+
 {:else }
   <SearchError errorType={errorType}/>
 {/if}
@@ -74,5 +79,9 @@
     display: flex;
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .wrapper {
+    height: 100%;
   }
 </style>

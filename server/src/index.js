@@ -19,7 +19,7 @@ let regionToUrlMap = {
   'TR':	'tr1.api.riotgames.com',
   'RU':	'ru.api.riotgames.com'
 }
-let devKey = "RGAPI-cd8803ce-889b-48c7-af06-023713dcc3da";
+let devKey = "RGAPI-7da4909a-06e7-4551-8a7d-c1a2b0039087";
 
 const requestToRiotAPI = async (url) => {
   try {

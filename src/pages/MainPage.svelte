@@ -9,7 +9,7 @@
     await featuredGames.populate()
 
     if ($featuredGames[0].status_code >= 400) {
-      notifications.addNotification({type: 'error',message: 'cool, it broke now :)'});
+      notifications.addNotification({type: 'error',message: 'Something went wrong with the API'});
       featuredGames.clear()
     }
   })

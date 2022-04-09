@@ -37,12 +37,11 @@
   }
 
   header {
-    height: 5%;
+    height: 10%;
   }
 
   main {
-    //padding-left: 100px;
-    //padding-right: 100px;
+    height: 90%;
   }
 
   :global(body) {
