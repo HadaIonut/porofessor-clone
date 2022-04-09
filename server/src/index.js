@@ -22,7 +22,11 @@ let regionToUrlMap = {
 let devKey = "RGAPI-cd8803ce-889b-48c7-af06-023713dcc3da";
 
 const requestToRiotAPI = async (url) => {
-  return await fetch(`${url}?api_key=${devKey}`).then(r => r.json()).then(res => res);
+  try {
+    return await fetch(`${url}?api_key=${devKey}`).then(r => r.json()).then(res => res);
+  } catch (e) {
+    return e;
+  }
 }
 
 app.get('/summonerName/:userName/region/:region', async function (req, res) {
@@ -48,7 +52,9 @@ app.get('/featured', async (req, res) => {
   const featuredGamesEUW = await requestToRiotAPI(`https://${regionToUrlMap['EUW']}/lol/spectator/v4/featured-games`)
   const featuredGamesNA = await requestToRiotAPI(`https://${regionToUrlMap['NA']}/lol/spectator/v4/featured-games`)
 
-  res.send([...featuredGamesEUW.gameList, ...featuredGamesNA.gameList]);
+  if (featuredGamesEUW.gameList && featuredGamesNA.gameList)
+    res.send([...featuredGamesEUW.gameList, ...featuredGamesNA.gameList]);
+  else res.send([featuredGamesEUW.status, featuredGamesNA.status])
 })
 
 app.use('/static', express.static(path.join(__dirname, '../assets')))

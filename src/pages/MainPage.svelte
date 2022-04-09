@@ -3,11 +3,21 @@
   import {onMount} from "svelte";
   import featuredGames from "../storeModules/featuredGames.js";
   import FeaturedGames from "../components/FeaturedGames.svelte";
+  import Notification from "../components/Notification.svelte";
+  import notifications from "../storeModules/notifications.js";
 
-  onMount(async () => await featuredGames.populate())
+  onMount(async () => {
+    await featuredGames.populate()
+
+    if ($featuredGames[0].status_code >= 400) {
+      notifications.addNotification({type: 'error',message: 'cool, it broke now :)'});
+      featuredGames.clear()
+    }
+  })
 </script>
 
 <div class="page-container">
+  <Notification/>
   <SummonerInput/>
   <FeaturedGames/>
 </div>

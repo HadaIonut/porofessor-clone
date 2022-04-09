@@ -1,0 +1,1 @@
+export const notificationDropSpeed = 2000;
