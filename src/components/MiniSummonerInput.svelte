@@ -1,5 +1,6 @@
 <script>
   import {genericMessages} from "../constants/text-lists.js";
+  import backendUrl from "../constants/backendUrl.js";
 
   let searchValue;
 </script>
@@ -9,6 +10,7 @@
          class="mini-summoner-search"
          placeholder={genericMessages.summonerInputPlaceholder}
         bind:value={searchValue}>
+  <img src={`${backendUrl}/static/icons/search.png`}>
 </div>
 
 <style lang="scss">
