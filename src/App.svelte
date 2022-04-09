@@ -4,10 +4,13 @@
   import MatchView from "./pages/MatchView.svelte";
   import PlayerView from "./pages/PlayerView.svelte";
   import NotificationManager from "./components/NotificationManager.svelte";
+  import Header from "./components/Header.svelte";
 </script>
 
 <Router>
-  <header></header>
+  <header>
+    <Header/>
+  </header>
 
   <main>
     <NotificationManager/>

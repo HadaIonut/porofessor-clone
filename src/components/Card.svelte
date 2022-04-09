@@ -24,7 +24,7 @@
   }
 
   .card-header {
-    background: #2a2c31;
+    background: $darker-gray;
     padding-top: 5px;
     padding-bottom: 5px;
     border-bottom: #2387a9 solid 2px;
