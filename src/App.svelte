@@ -1,26 +1,29 @@
 <script>
-    import { Router, Route, Link } from "svelte-navigator";
-    import MainPage from "./pages/MainPage.svelte";
-    import MatchView from "./pages/MatchView.svelte";
-    import PlayerView from "./pages/PlayerView.svelte";
+  import {Router, Route, Link} from "svelte-navigator";
+  import MainPage from "./pages/MainPage.svelte";
+  import MatchView from "./pages/MatchView.svelte";
+  import PlayerView from "./pages/PlayerView.svelte";
+  import NotificationManager from "./components/NotificationManager.svelte";
 </script>
 
 <Router>
-    <header></header>
+  <header></header>
 
-    <main>
-        <Route path="/match/:region/:username" let:params>
-            <MatchView region="{params.region}" username="{params.username}"/>
-        </Route>
+  <main>
+    <NotificationManager/>
 
-        <Route path="/user/:username" let:params>
-            <PlayerView username="{params.username}"/>
-        </Route>
+    <Route path="/match/:region/:username" let:params>
+      <MatchView region="{params.region}" username="{params.username}"/>
+    </Route>
 
-        <Route>
-            <MainPage/>
-        </Route>
-    </main>
+    <Route path="/user/:username" let:params>
+      <PlayerView username="{params.username}"/>
+    </Route>
+
+    <Route>
+      <MainPage/>
+    </Route>
+  </main>
 
 </Router>
 
@@ -28,6 +31,9 @@
   :root {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
   }
 
   header {

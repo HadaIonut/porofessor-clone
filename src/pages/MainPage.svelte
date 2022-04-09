@@ -3,7 +3,6 @@
   import {onMount} from "svelte";
   import featuredGames from "../storeModules/featuredGames.js";
   import FeaturedGames from "../components/FeaturedGames.svelte";
-  import Notification from "../components/Notification.svelte";
   import notifications from "../storeModules/notifications.js";
 
   onMount(async () => {
@@ -17,7 +16,6 @@
 </script>
 
 <div class="page-container">
-  <Notification/>
   <SummonerInput/>
   <FeaturedGames/>
 </div>
