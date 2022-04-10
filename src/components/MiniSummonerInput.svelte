@@ -1,8 +1,15 @@
 <script>
   import {genericMessages} from "../constants/text-lists.js";
   import Dropdown from "./Dropdown.svelte";
+  import {regionList} from "../constants/regions.js";
 
   let searchValue;
+  let regions = regionList;
+  let selectedRegion = 'EUNE';
+
+  const handleRegionSelect = (regionName) => {
+    selectedRegion = regionName
+  }
 </script>
 
 <div class="search-container">
@@ -10,15 +17,16 @@
          class="mini-summoner-search"
          placeholder={genericMessages.summonerInputPlaceholder}
         bind:value={searchValue}>
-
-  <Dropdown>
-    <div slot="dropdown-button">caca</div>
-    <div slot="options">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-    </div>
-  </Dropdown>
+  <div class="dropdown-container">
+    <Dropdown>
+      <div slot="dropdown-button">{selectedRegion}</div>
+      <div slot="options">
+        {#each regions as region}
+          <div on:click={() => handleRegionSelect(region.regionName)}> {region.regionName} </div>
+        {/each}
+      </div>
+    </Dropdown>
+  </div>
 </div>
 
 <style lang="scss">
@@ -29,6 +37,7 @@
     height: 2.5rem;
     position: relative;
   }
+
   .mini-summoner-search {
     width: calc(100% - 20px);
     height: calc(100% - 20px);
@@ -37,6 +46,11 @@
     border: none;
     color: $white;
     padding: 10px;
+  }
 
+  .dropdown-container {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 </style>
