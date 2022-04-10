@@ -1,10 +1,14 @@
 <script>
-
 import MiniSummonerInput from "./MiniSummonerInput.svelte";
+import {navigate} from "svelte-navigator";
+
+const handleClick = () => navigate('/');
 </script>
 
 <div class="header-container">
-  <div class="title-container">Porofessor Clone :D</div>
+  <div class="title-container" on:click={handleClick}>
+    Porofessor Clone :D
+  </div>
   <MiniSummonerInput/>
 </div>
 
@@ -17,6 +21,7 @@ import MiniSummonerInput from "./MiniSummonerInput.svelte";
     font-weight: 500;
     line-height: 1;
     color: $white;
+    cursor: pointer;
   }
 
   .header-container {

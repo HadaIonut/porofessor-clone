@@ -2,6 +2,7 @@
   import {genericMessages} from "../constants/text-lists.js";
   import Dropdown from "./Dropdown.svelte";
   import {regionList} from "../constants/regions.js";
+  import {navigate} from "svelte-navigator";
 
   let searchValue;
   let regions = regionList;
@@ -10,13 +11,17 @@
   const handleRegionSelect = (regionName) => {
     selectedRegion = regionName
   }
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') navigate(`/match/${selectedRegion}/${searchValue}`);
+  }
 </script>
 
 <div class="search-container">
   <input type="text"
          class="mini-summoner-search"
          placeholder={genericMessages.summonerInputPlaceholder}
-        bind:value={searchValue}>
+        bind:value={searchValue}
+        on:keypress={handleKeyPress}>
   <div class="dropdown-container">
     <Dropdown>
       <div slot="dropdown-button">{selectedRegion}</div>
